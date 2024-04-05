@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+var commandsMap = {
+
+    "cli": require("./cli"),
+    "init": require("./init")
+};
+
+var args = process.argv.slice(2);
+
+if(!args.length)
+    throw new Error("Commnd missing");
+
+var command = args[0];
+args = args.slice(1);
+
+if(!commandsMap[command])
+    throw new Error("Unknown command: '" + command + "'");
+
+commandsMap[command](args);

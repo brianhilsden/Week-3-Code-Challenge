@@ -1,0 +1,104 @@
+{
+  "name": "obsdb",
+  "version": "1.0.0",
+  "created": 1234,
+  "updated": 1466842732831,
+  "tables": [
+    {
+      "name": "accounts",
+      "created": 42,
+      "updated": 1466842732831,
+      "fields": [
+        {
+          "name": "id",
+          "type": "id",
+          "unique": true,
+          "generated": true,
+          "nullable": false,
+          "default": null
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "unique": true,
+          "regex": "^[a-zA-Z0-9_-]+$",
+          "minLength": 6,
+          "maxLength": 32,
+          "nullable": false,
+          "generated": false,
+          "default": null
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "regex": "^[a-zA-Z0-9_-]+$",
+          "minLength": 10,
+          "maxLength": 64,
+          "nullable": false,
+          "unique": false,
+          "generated": false,
+          "default": null
+        },
+        {
+          "name": "type",
+          "type": "integer",
+          "minValue": 0,
+          "default": 0,
+          "nullable": false,
+          "unique": false,
+          "generated": false
+        }
+      ],
+      "entries": [
+        {
+          "username": "username0",
+          "password": "motdepasse",
+          "type": 0,
+          "id": "s9lty0qnion4dydc"
+        },
+        {
+          "username": "username1",
+          "password": "motdepasse",
+          "type": 1,
+          "id": "wqm1752a8ka93hm1"
+        },
+        {
+          "username": "username2",
+          "password": "motdepasse",
+          "type": 2,
+          "id": "m21gzxulaoymwbyq"
+        },
+        {
+          "username": "username3",
+          "password": "motdepasse",
+          "type": 3,
+          "id": "5j8la155y2op3jyi"
+        },
+        {
+          "username": "username4",
+          "password": "motdepasse",
+          "type": 4,
+          "id": "ttrw8c33e81ddww1"
+        },
+        {
+          "username": "obsthegod",
+          "password": "azertyuiopqsdfghjklm",
+          "id": "go1eyr4pql0a0vyc",
+          "type": 0
+        },
+        {
+          "username": "obs145628",
+          "password": "thenewbeginning",
+          "id": "88kk1uhgd9f0ddqi",
+          "type": 0
+        },
+        {
+          "username": "obsishelper",
+          "password": "azertyuiop",
+          "id": "gqcnzdsq3i9mvpy1",
+          "type": 0
+        }
+      ]
+    }
+  ]
+}
