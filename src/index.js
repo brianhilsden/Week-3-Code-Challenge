@@ -5,13 +5,13 @@ const runtime = document.getElementById("runtime");
 const description = document.getElementById("film-info");
 const showtime = document.getElementById("showtime");
 const ticketsLeft = document.getElementById("ticket-num");
-const buyTickets = document.querySelector("div button")
+const buyTickets = document.querySelector("div button");
 const filmUrl = "http://localhost:3000/films";
 
 // Fetches and lists film titles from the server
-function listTitles() {
+function getFilmsData() {
   titleList.textContent = ""; //To remove the default list item first
-  
+
   fetch(filmUrl)
     .then((res) => res.json())
     .then((data) => {
@@ -21,31 +21,31 @@ function listTitles() {
         title.style.cursor = "pointer";
         title.id = film.id;
         title.classList.add("film", "item");
-        title.onclick = () => movieData(film); // Attaches an event listener to a title element to fetch movie data on click.
 
-        // Setting innerHTML to display the film title in uppercase alongside a button to delete it upon click
+        // Setting innerHTML to display the film title in uppercase alongside a button to delete the entire list item
         title.innerHTML = `
             ${film.title.toUpperCase()}
-            <button onclick= "deleteItem(${film.id})" style="background-color:#FF033E;color:white;border-radius:5px">Delete</button>
+            <button id="D${film.id}" style="background-color:#FF033E;color:white;border-radius:5px">Delete</button>
+            `
+        ;
 
-        `;
         // Appending the created list item to the title list
         titleList.appendChild(title);
+
+        //Use the film data and pass it as arguments to the functions
+        displaySpecificMovieDetails(film);
+        deleteSpecificMovie(film);
       });
       /*gets the data for the first available film and passes it into the firstFilm function, to use in displaying it when the page first loads. The id may not be 1 if some films were deleted, hence why I did not use the get endpoint with an id of 1*/
       firstFilm(data[0]);
     });
 }
 // Calling the function to fetch all film data and display film titles
-listTitles();
+getFilmsData();
 
-// Calls movieData to initialize the display with the first film's details
-function firstFilm(firstFilmData) {
-  movieData(firstFilmData);
-}
 
-/* This re-usable function updates the displayed movie information when a movie is selected or first movie when the page loads*/
-function movieData(film) {
+/* This re-usable function updates the displayed movie information when called*/
+function populateMovieData(film) {
   poster.src = film.poster;
   poster.alt = film.title;
   title.textContent = film.title;
@@ -54,36 +54,51 @@ function movieData(film) {
   showtime.textContent = film.showtime;
   // Calculates and displays the remaining tickets by subtracting tickets sold from capacity
   ticketsLeft.textContent = `${film.capacity - film.tickets_sold}`;
-  console.log(film.tickets_sold);
-  buyTickets.id = `B${film.id}`; // Sets the ID for the buy ticket button based on the current film ID
   buyTickets.textContent = ticketsLeft.textContent > 0 ? "Buy Ticket" : "SOLD OUT"; // Sets button text based on ticket availability
 
-  purchaseFilmTickets(film,ticketsLeft.textContent); // Calls the function to handle film ticket purchase and passes the arguments or current film object and number of tickets remaining.
+  purchaseFilmTickets(film); // Calls the function to handle film ticket purchase and passes the arguments of current film object
 }
 
-// Remove a film by its ID upn click of the delete button
-function deleteItem(id) {
-  fetch(`${filmUrl}/${id}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((e) => {
-      alert(e);
-    });
+// Calls populateMovieData to initialize the display with the first film's details
+function firstFilm(firstFilmData) {
+  populateMovieData(firstFilmData);
 }
-function purchaseFilmTickets(film,ticketsRemaining) {
-  // Directly pass the film data to the event listener function
-  const buyButton = document.getElementById(`B${film.id}`);
 
-  buyButton.onclick = function () {
-    ticketsRemaining--; // Decrementing the number of tickets left
+function displaySpecificMovieDetails(film) {
+  // Gets the film title list item by its id and adds a click event to populate its data
+  const displayMovie = document.getElementById(film.id);
+  displayMovie.addEventListener("click", () => {
+    populateMovieData(film);
+  });
+}
 
-    if (ticketsRemaining >= 0) {
+
+//Deletes movie when button is pressed
+function deleteSpecificMovie(film) {
+  const deleteButton = document.getElementById(`D${film.id}`);
+  deleteButton.addEventListener("click", () => {
+    fetch(`${filmUrl}/${film.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((e) => {
+        alert(e);
+      });
+  });
+}
+
+//uses current film object to 
+function purchaseFilmTickets(film) {
+
+  buyTickets.onclick = function () {
+    ticketsLeft.textContent--; // Decrementing the number of tickets left
+
+    if (ticketsLeft.textContent >= 0) {
       film.tickets_sold++; // Incrementing the number of tickets sold
       // Creating an object to send the updated tickets sold count to the server
       const ticketData = {
@@ -103,12 +118,17 @@ function purchaseFilmTickets(film,ticketsRemaining) {
         // After receiving the response, updating the display of remaining tickets for the current film and button
         .then((data) => {
           ticketsLeft.textContent = `${data.capacity - data.tickets_sold}`;
-          buyTickets.textContent = ticketsRemaining === 0 ? "SOLD OUT" : "Buy Ticket";
+
+          if (ticketsLeft.textContent === 0) {
+            buyTickets.textContent = "SOLD OUT";
+            document.getElementById(film.id).classList.add("sold-out"); // Adds sold-out class to the film's element if tickets are sold out
+          }
         })
         .catch((e) => {
           alert(e);
         });
 
+      //POST request to add bought ticket(s) to the tickets endpoint
       fetch("http://localhost:3000/tickets", {
         method: "POST",
         headers: {
