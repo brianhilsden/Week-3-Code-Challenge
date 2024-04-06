@@ -10,7 +10,6 @@ const filmUrl = "http://localhost:3000/films";
 let currentFilmId;
 let currentFilmTicketsSold;
 let currentFilmTicketsLeft;
-let currentFilmTicketsBought=0
 
 // Fetches and lists film titles from the server
 function listTitles() {
@@ -22,7 +21,7 @@ function listTitles() {
         // Creates a list item for each film title, adds a cursor so it shows it's clickable
         const title = document.createElement("li");
         title.style.cursor = "pointer";
-        title.id = film.id; 
+        title.id = film.id;
         title.classList.add("film", "item");
         title.onclick=()=>movieData(film) // Attaches an event listener to a title element to fetch movie data on click.
 
@@ -36,19 +35,12 @@ function listTitles() {
         titleList.appendChild(title);
        
       });
-      /*gets the data for the first available film and passes it into the firstFilm function, to use in displaying it when the page first loads. The id may not be 1 if some films were deleted, hence why I did not use the get endpoint with an id of 1*/
-      firstFilm(data[0])
-
+      
+      movieData(data[0]) // Invokes movieData with the first film in the data array to initialize the page with film details.
     });
 }
 // Calling the function to fetch all film data and display film titles
 listTitles();
-
-// Calls movieData to initialize the display with the first film's details
-function firstFilm(firstFilmData){
-  movieData(firstFilmData)
-}
-
 
 /* This re-usable function updates the displayed movie information when a movie is selected or first movie when the page loads*/
 function movieData(film){
@@ -131,7 +123,7 @@ buyTickets.addEventListener("click", () => {
                 body:JSON.stringify({ 
                   film_id:currentFilmId, // Includes the current film's ID to identify which film the tickets are for
                   tickets:1 // Number of tickets being purchased
-                }),
+                })
               }).then(res=>console.log(res.json())) 
               .catch(e=>{
                 alert(e) // Alerts the user in case of an error
