@@ -5,8 +5,10 @@ const runtime = document.getElementById("runtime");
 const description = document.getElementById("film-info");
 const showtime = document.getElementById("showtime");
 const ticketsLeft = document.getElementById("ticket-num");
-const buyTickets = document.querySelector("div button");
+const buyTickets = document.getElementById("buy-ticket")
+const numOfTicketsBought = document.getElementById("tickets_bought")
 const filmUrl = "http://localhost:3000/films";
+
 
 // Fetches and lists film titles from the server
 function getFilmsData() {
@@ -38,6 +40,8 @@ function getFilmsData() {
       });
       /*gets the data for the first available film and passes it into the firstFilm function, to use in displaying it when the page first loads. The id may not be 1 if some films were deleted, hence why I did not use the get endpoint with an id of 1*/
       firstFilm(data[0]);
+    }).catch(error=>{
+      alert(`Error: ${error.message}`)
     });
 }
 // Calling the function to fetch all film data and display film titles
@@ -46,15 +50,18 @@ getFilmsData();
 
 /* This re-usable function updates the displayed movie information when called*/
 function populateMovieData(film) {
+  ticketsLeft.textContent = `${film.capacity - film.tickets_sold}`;
   poster.src = film.poster;
   poster.alt = film.title;
   title.textContent = film.title;
   runtime.textContent = `${film.runtime} minutes `;
   description.textContent = film.description;
   showtime.textContent = film.showtime;
+
+  numOfTicketsBought.max = ticketsLeft.textContent // Sets the maximum value of tickets that can be bought to the number of tickets left
+
   // Calculates and displays the remaining tickets by subtracting tickets sold from capacity
-  ticketsLeft.textContent = `${film.capacity - film.tickets_sold}`;
-  buyTickets.textContent = ticketsLeft.textContent > 0 ? "Buy Ticket" : "SOLD OUT"; // Sets button text based on ticket availability
+  buyTickets.textContent = ticketsLeft.textContent > 0 ? "Buy Tickets" : "SOLD OUT"; // Sets button text based on ticket availability
 
   purchaseFilmTickets(film); // Calls the function to handle film ticket purchase and passes the arguments of current film object
 }
@@ -65,9 +72,11 @@ function firstFilm(firstFilmData) {
 }
 
 function displaySpecificMovieDetails(film) {
+ 
   // Gets the film title list item by its id and adds a click event to populate its data
   const displayMovie = document.getElementById(film.id);
   displayMovie.addEventListener("click", () => {
+    numOfTicketsBought.value=1 // Sets the number of tickets being bought to 1 by default
     populateMovieData(film);
   });
 }
@@ -77,18 +86,23 @@ function displaySpecificMovieDetails(film) {
 function deleteSpecificMovie(film) {
   const deleteButton = document.getElementById(`D${film.id}`);
   deleteButton.addEventListener("click", () => {
-    fetch(`${filmUrl}/${film.id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((e) => {
-        alert(e);
-      });
+
+    //Confirm prompt to avoid unintended film deletion
+    if(confirm(`Warning! This will completely remove ${film.title} from the database. Kindly confirm`)){
+      fetch(`${filmUrl}/${film.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((e) => {
+          alert(`Error: ${e.message}`);
+        });
+    }
+   
   });
 }
 
@@ -96,10 +110,13 @@ function deleteSpecificMovie(film) {
 function purchaseFilmTickets(film) {
 
   buyTickets.onclick = function () {
-    ticketsLeft.textContent--; // Decrementing the number of tickets left
-
-    if (ticketsLeft.textContent >= 0) {
-      film.tickets_sold++; // Incrementing the number of tickets sold
+    
+    
+   
+    if (ticketsLeft.textContent > 0) {
+      ticketsLeft.textContent=parseInt(ticketsLeft.textContent)-parseInt(numOfTicketsBought.value); // Decrementing the number of tickets left
+      console.log(ticketsLeft.textContent);
+      film.tickets_sold=parseInt(film.tickets_sold)+parseInt(numOfTicketsBought.value); // Incrementing the number of tickets sold
       // Creating an object to send the updated tickets sold count to the server
       const ticketData = {
         tickets_sold: film.tickets_sold, // Document update to ticket counts
@@ -118,14 +135,15 @@ function purchaseFilmTickets(film) {
         // After receiving the response, updating the display of remaining tickets for the current film and button
         .then((data) => {
           ticketsLeft.textContent = `${data.capacity - data.tickets_sold}`;
+          numOfTicketsBought.max = ticketsLeft.textContent // Sets the maximum value of tickets that can be bought to the number of tickets left
 
-          if (ticketsLeft.textContent === 0) {
+          if (ticketsLeft.textContent == 0) {
             buyTickets.textContent = "SOLD OUT";
             document.getElementById(film.id).classList.add("sold-out"); // Adds sold-out class to the film's element if tickets are sold out
           }
         })
         .catch((e) => {
-          alert(e);
+          alert(`Error: ${e.message}`);
         });
 
       //POST request to add bought ticket(s) to the tickets endpoint
@@ -138,12 +156,12 @@ function purchaseFilmTickets(film) {
         },
         body: JSON.stringify({
           film_id: film.id, // Includes the current film's ID to identify which film the tickets are for
-          tickets: 1, // Number of tickets being purchased
+          tickets: numOfTicketsBought.value, // Number of tickets being purchased
         }),
       })
         .then((res) => console.log(res.json()))
         .catch((e) => {
-          alert(e); // Alerts the user in case of an error
+          alert(`Error: ${e.message}`); // Alerts the user in case of an error
         });
     }
   };
