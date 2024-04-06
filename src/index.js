@@ -26,7 +26,7 @@ function listTitles() {
         // Setting innerHTML to display the film title in uppercase alongside a button to delete it upon click
         title.innerHTML = `
             ${film.title.toUpperCase()}
-            <button onclick= "deleteItem(${film.id})">Delete</button>
+            <button onclick= "deleteItem(${film.id})" style="background-color:#FF033E;color:white;border-radius:5px">Delete</button>
 
         `;
         // Appending the created list item to the title list
