@@ -22,14 +22,14 @@ function listTitles() {
         // Creates a list item for each film title, adds a cursor so it shows it's clickable
         const title = document.createElement("li");
         title.style.cursor = "pointer";
-        title.id = film.id;
+        title.id = film.id; 
         title.classList.add("film", "item");
         title.onclick=()=>movieData(film) // Attaches an event listener to a title element to fetch movie data on click.
 
         // Setting innerHTML to display the film title in uppercase alongside a button to delete it upon click
         title.innerHTML = `
             ${film.title.toUpperCase()}
-            <button onclick= "deleteItem(${film.id})">Delete</button>
+            <button onclick= "deleteItem(${film.id},'${film.title}')" style="border-radius: 5px;background-color:#D2122E;color:white">Delete</button>
 
         `;
         // Appending the created list item to the title list
@@ -72,19 +72,23 @@ function movieData(film){
 
 
   // Remove a film by its ID upn click of the delete button
-function deleteItem(id) {
-  fetch(`${filmUrl}/${id}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch(e=>{
-      alert(e)
-    });
+function deleteItem(id,filmTitle) {
+   //Confirm dialog before actually deleting the item
+  if (confirm(`Warning! This will remove ${filmTitle} entirely from the database. Kindly confirm`)){
+    fetch(`${filmUrl}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch(e=>{
+        alert(e)
+      });
+  }
+ 
 }
 
 
@@ -127,7 +131,7 @@ buyTickets.addEventListener("click", () => {
                 body:JSON.stringify({ 
                   film_id:currentFilmId, // Includes the current film's ID to identify which film the tickets are for
                   tickets:1 // Number of tickets being purchased
-                })
+                }),
               }).then(res=>console.log(res.json())) 
               .catch(e=>{
                 alert(e) // Alerts the user in case of an error
