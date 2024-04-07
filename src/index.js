@@ -59,7 +59,7 @@ function populateMovieData(film) {
   description.textContent = film.description;
   showtime.textContent = film.showtime;
   // Calculates and displays the remaining tickets by subtracting tickets sold from capacity
-  buyTickets.textContent = ticketsLeft.textContent > 0 ? "Buy Ticket" : "SOLD OUT"; // Sets button text based on ticket availability
+  buyTickets.textContent = ticketsLeft.textContent > 0 ? "Buy Tickets" : "SOLD OUT"; // Sets button text based on ticket availability
   ticketsBought.value=1
   ticketsBought.max=ticketsLeft.textContent
   purchaseFilmTickets(film); // Calls the function to handle film ticket purchase and passes the arguments of current film object
