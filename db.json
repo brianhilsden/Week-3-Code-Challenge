@@ -6,7 +6,7 @@
       "runtime": "108",
       "capacity": 30,
       "showtime": "04:00PM",
-      "tickets_sold": 12,
+      "tickets_sold": 17,
       "description": "A giant lizard terrorizes a rural Texas community and a heroic teenager attempts to destroy the creature.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/2157/p2157_v_v8_ab.jpg"
     },
@@ -157,6 +157,31 @@
       "id": "9bb1",
       "film_id": "1",
       "tickets": 1
+    },
+    {
+      "id": "073b",
+      "film_id": "1",
+      "tickets": "1"
+    },
+    {
+      "id": "fa03",
+      "film_id": "1",
+      "tickets": "1"
+    },
+    {
+      "id": "ab2b",
+      "film_id": "1",
+      "tickets": "1"
+    },
+    {
+      "id": "424b",
+      "film_id": "1",
+      "tickets": "1"
+    },
+    {
+      "id": "3662",
+      "film_id": "1",
+      "tickets": "1"
     }
   ]
 }
