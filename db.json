@@ -86,7 +86,7 @@
       "runtime": "99",
       "capacity": 40,
       "showtime": "07:30PM",
-      "tickets_sold": 22,
+      "tickets_sold": 26,
       "description": "A saboteur posing as a scientist strives to destroy the world's first space station.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/46755/p46755_v_v8_aa.jpg"
     },
@@ -160,26 +160,6 @@
     },
     {
       "id": "073b",
-      "film_id": "1",
-      "tickets": "1"
-    },
-    {
-      "id": "fa03",
-      "film_id": "1",
-      "tickets": "1"
-    },
-    {
-      "id": "ab2b",
-      "film_id": "1",
-      "tickets": "1"
-    },
-    {
-      "id": "424b",
-      "film_id": "1",
-      "tickets": "1"
-    },
-    {
-      "id": "3662",
       "film_id": "1",
       "tickets": "1"
     }

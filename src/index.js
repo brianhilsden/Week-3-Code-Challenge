@@ -74,7 +74,7 @@ function displaySpecificMovieDetails(film) {
   // Gets the film title list item by its id and adds a click event to populate its data
   const displayMovie = document.getElementById(film.id);
   displayMovie.addEventListener("click", () => {
-    
+
     populateMovieData(film);
   });
 }
@@ -99,7 +99,7 @@ function deleteSpecificMovie(film) {
   });
 }
 
-//uses current film object to 
+//uses current film object to
 function purchaseFilmTickets(film) {
 
   buyTickets.onclick = function () {
