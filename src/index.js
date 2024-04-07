@@ -153,9 +153,8 @@ function purchaseFilmTickets(film) {
         .then(data=>{
           const ticket=document.createElement("li")
           ticket.innerHTML=`
-            Movie title: ${film.title}
-            Ticket id: ${data.id}
-            No.of tickets: ${data.tickets}
+            Ticket id: ${data.id}, No.of tickets: ${data.tickets}<br>
+            Movie title: ${film.title}<br>
             Movie time: ${film.showtime}
           `
           movieTickets.appendChild(ticket)
