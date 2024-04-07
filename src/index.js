@@ -60,8 +60,8 @@ function populateMovieData(film) {
   showtime.textContent = film.showtime;
   // Calculates and displays the remaining tickets by subtracting tickets sold from capacity
   buyTickets.textContent = ticketsLeft.textContent > 0 ? "Buy Tickets" : "SOLD OUT"; // Sets button text based on ticket availability
-  ticketsBought.value=1
-  ticketsBought.max=ticketsLeft.textContent
+  ticketsBought.value=1 // Sets the initial number of tickets to be purchased to 1
+  ticketsBought.max=ticketsLeft.textContent // Sets the maximum number of tickets that can be bought to the number of tickets left
   purchaseFilmTickets(film); // Calls the function to handle film ticket purchase and passes the arguments of current film object
 }
 
@@ -70,8 +70,8 @@ function firstFilm(firstFilmData) {
   populateMovieData(firstFilmData);
 }
 
+// Gets the film title list item by its id and adds a click event to populate its data
 function displaySpecificMovieDetails(film) {
-  // Gets the film title list item by its id and adds a click event to populate its data
   const displayMovie = document.getElementById(film.id);
   displayMovie.addEventListener("click", () => {
 
@@ -80,7 +80,7 @@ function displaySpecificMovieDetails(film) {
 }
 
 
-//Deletes movie when button is pressed
+ // Attaches an event listener to the delete button of a specific film and handles the deletion process
 function deleteSpecificMovie(film) {
   const deleteButton = document.getElementById(`D${film.id}`);
   deleteButton.addEventListener("click", () => {
@@ -99,20 +99,22 @@ function deleteSpecificMovie(film) {
   });
 }
 
-//uses current film object to
-function purchaseFilmTickets(film) {
 
+
+  /* Handles the process of purchasing film tickets, updating the tickets sold and the remaining tickets, posting tickets bought to the tickets endpoint and displaying the response on the screen*/
+function purchaseFilmTickets(film) {
   buyTickets.onclick = function () {
     if (ticketsLeft.textContent > 0 && parseInt(ticketsBought.value)<=parseInt(ticketsBought.max)) { // Checks if there are tickets left and if the number of tickets bought doesn't exceed the max allowed
       ticketsLeft.textContent=parseInt(ticketsLeft.textContent)-parseInt(ticketsBought.value); // Decrementing the number of tickets left
       film.tickets_sold=parseInt(film.tickets_sold)+parseInt(ticketsBought.value); // Incrementing the number of tickets sold
       // Creating an object to send the updated tickets sold count to the server
       const ticketData = {
-        tickets_sold: film.tickets_sold, // Document update to ticket counts
+        tickets_sold: film.tickets_sold
       };
+
       // Sending a PATCH request to the server to update the tickets sold count for the current film
       fetch(`${filmUrl}/${film.id}`, {
-        method: "PATCH", //
+        method: "PATCH", 
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
@@ -138,7 +140,6 @@ function purchaseFilmTickets(film) {
       fetch("http://localhost:3000/tickets", {
         method: "POST",
         headers: {
-          // Headers sent with the request
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
@@ -149,13 +150,15 @@ function purchaseFilmTickets(film) {
       })
         .then((res) =>res.json())
         .then(data=>{
-          const ticket=document.createElement("li")
+          const ticket=document.createElement("li") // Creating a new list item element to display ticket details
+          
+          // Setting the inner HTML of the ticket element to display the ticket ID, number of tickets, movie title, and showtime
           ticket.innerHTML=`
             Ticket id: ${data.id}, No.of tickets: ${data.tickets}<br>
             Movie title: ${film.title}<br>
             Movie time: ${film.showtime}
-          `
-          movieTickets.appendChild(ticket)
+          ` 
+          movieTickets.appendChild(ticket) // Appending the created ticket element to the movieTickets list in the DOM
         })
         .catch((e) => {
           alert(e); // Alerts the user in case of an error
