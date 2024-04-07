@@ -103,9 +103,8 @@ function deleteSpecificMovie(film) {
 function purchaseFilmTickets(film) {
 
   buyTickets.onclick = function () {
-    
-    console.log(film.title);
-    if (ticketsLeft.textContent > 0) {
+   
+    if (ticketsLeft.textContent > 0 && ticketsBought.value<=ticketsBought.max) { // Checks if there are tickets left and if the number of tickets bought doesn't exceed the max allowed
       ticketsLeft.textContent=parseInt(ticketsLeft.textContent)-parseInt(ticketsBought.value); // Decrementing the number of tickets left
       film.tickets_sold=parseInt(film.tickets_sold)+parseInt(ticketsBought.value); // Incrementing the number of tickets sold
       // Creating an object to send the updated tickets sold count to the server
@@ -126,7 +125,7 @@ function purchaseFilmTickets(film) {
         // After receiving the response, updating the display of remaining tickets for the current film and button
         .then((data) => {
           ticketsLeft.textContent = `${data.capacity - data.tickets_sold}`;
-
+          ticketsBought.max =ticketsLeft.textContent // Sets the maximum number of tickets that can be bought to the number of tickets left
           if (ticketsLeft.textContent == 0) {
             buyTickets.textContent = "SOLD OUT";
             document.getElementById(film.id).classList.add("sold-out"); // Adds sold-out class to the film's element if tickets are sold out
@@ -146,7 +145,7 @@ function purchaseFilmTickets(film) {
         },
         body: JSON.stringify({
           film_id: film.id, // Includes the current film's ID to identify which film the tickets are for
-          tickets: 1, // Number of tickets being purchased
+          tickets: ticketsBought.value, // Number of tickets being purchased
         }),
       })
         .then((res) =>res.json())
