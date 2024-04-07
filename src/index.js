@@ -103,8 +103,7 @@ function deleteSpecificMovie(film) {
 function purchaseFilmTickets(film) {
 
   buyTickets.onclick = function () {
-   
-    if (ticketsLeft.textContent > 0 && ticketsBought.value<=ticketsBought.max) { // Checks if there are tickets left and if the number of tickets bought doesn't exceed the max allowed
+    if (ticketsLeft.textContent > 0 && parseInt(ticketsBought.value)<=parseInt(ticketsBought.max)) { // Checks if there are tickets left and if the number of tickets bought doesn't exceed the max allowed
       ticketsLeft.textContent=parseInt(ticketsLeft.textContent)-parseInt(ticketsBought.value); // Decrementing the number of tickets left
       film.tickets_sold=parseInt(film.tickets_sold)+parseInt(ticketsBought.value); // Incrementing the number of tickets sold
       // Creating an object to send the updated tickets sold count to the server
