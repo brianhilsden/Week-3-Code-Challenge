@@ -108,7 +108,7 @@ function purchaseFilmTickets(film) {
       film.tickets_sold=parseInt(film.tickets_sold)+parseInt(ticketsBought.value); // Incrementing the number of tickets sold
       // Creating an object to send the updated tickets sold count to the server
       const ticketData = {
-        tickets_sold: film.tickets_sold, // Document update to ticket counts
+        tickets_sold: film.tickets_sold, 
       };
       // Sending a PATCH request to the server to update the tickets sold count for the current film
       fetch(`${filmUrl}/${film.id}`, {
