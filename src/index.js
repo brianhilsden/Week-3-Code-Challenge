@@ -8,7 +8,7 @@ const ticketsLeft = document.getElementById("ticket-num");
 const buyTickets = document.querySelector("div button");
 const ticketsBought = document.getElementById("tickets-bought")
 const movieTickets = document.getElementById("movie-tickets")
-const filmUrl = "http://localhost:3000/films";
+const filmUrl = "https://json-server-flatdango.onrender.com/films";
 
 // Fetches and lists film titles from the server
 function getFilmsData() {
@@ -135,7 +135,7 @@ function purchaseFilmTickets(film) {
         });
 
       //POST request to add bought ticket(s) to the tickets endpoint
-      fetch("http://localhost:3000/tickets", {
+      fetch("https://json-server-flatdango.onrender.com/tickets", {
         method: "POST",
         headers: {
           // Headers sent with the request
