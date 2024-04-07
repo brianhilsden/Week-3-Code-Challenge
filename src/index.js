@@ -146,7 +146,7 @@ function purchaseFilmTickets(film) {
         },
         body: JSON.stringify({
           film_id: film.id, // Includes the current film's ID to identify which film the tickets are for
-          tickets: 1, // Number of tickets being purchased
+          tickets: ticketsBought.value, // Number of tickets being purchased
         }),
       })
         .then((res) =>res.json())
