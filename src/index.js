@@ -6,6 +6,8 @@ const description = document.getElementById("film-info");
 const showtime = document.getElementById("showtime");
 const ticketsLeft = document.getElementById("ticket-num");
 const buyTickets = document.querySelector("div button");
+const ticketsBought = document.getElementById("tickets-bought")
+const movieTickets = document.getElementById("movie-tickets")
 const filmUrl = "http://localhost:3000/films";
 
 // Fetches and lists film titles from the server
@@ -32,6 +34,9 @@ function getFilmsData() {
         // Appending the created list item to the title list
         titleList.appendChild(title);
 
+        if ((film.capacity-film.tickets_sold) == 0) {
+          title.classList.add("sold-out"); // Adds sold-out class to the film's element if tickets are sold out
+        }
         //Use the film data and pass it as arguments to the functions
         displaySpecificMovieDetails(film);
         deleteSpecificMovie(film);
@@ -46,6 +51,7 @@ getFilmsData();
 
 /* This re-usable function updates the displayed movie information when called*/
 function populateMovieData(film) {
+  ticketsLeft.textContent = `${film.capacity - film.tickets_sold}`;
   poster.src = film.poster;
   poster.alt = film.title;
   title.textContent = film.title;
@@ -53,9 +59,9 @@ function populateMovieData(film) {
   description.textContent = film.description;
   showtime.textContent = film.showtime;
   // Calculates and displays the remaining tickets by subtracting tickets sold from capacity
-  ticketsLeft.textContent = `${film.capacity - film.tickets_sold}`;
   buyTickets.textContent = ticketsLeft.textContent > 0 ? "Buy Ticket" : "SOLD OUT"; // Sets button text based on ticket availability
-
+  ticketsBought.value=1
+  ticketsBought.max=ticketsLeft.textContent
   purchaseFilmTickets(film); // Calls the function to handle film ticket purchase and passes the arguments of current film object
 }
 
@@ -68,6 +74,7 @@ function displaySpecificMovieDetails(film) {
   // Gets the film title list item by its id and adds a click event to populate its data
   const displayMovie = document.getElementById(film.id);
   displayMovie.addEventListener("click", () => {
+    
     populateMovieData(film);
   });
 }
@@ -81,7 +88,7 @@ function deleteSpecificMovie(film) {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
       },
     })
       .then((res) => res.json())
@@ -96,10 +103,11 @@ function deleteSpecificMovie(film) {
 function purchaseFilmTickets(film) {
 
   buyTickets.onclick = function () {
-    ticketsLeft.textContent--; // Decrementing the number of tickets left
-
-    if (ticketsLeft.textContent >= 0) {
-      film.tickets_sold++; // Incrementing the number of tickets sold
+    
+    console.log(film.title);
+    if (ticketsLeft.textContent > 0) {
+      ticketsLeft.textContent=parseInt(ticketsLeft.textContent)-parseInt(ticketsBought.value); // Decrementing the number of tickets left
+      film.tickets_sold=parseInt(film.tickets_sold)+parseInt(ticketsBought.value); // Incrementing the number of tickets sold
       // Creating an object to send the updated tickets sold count to the server
       const ticketData = {
         tickets_sold: film.tickets_sold, // Document update to ticket counts
@@ -109,7 +117,7 @@ function purchaseFilmTickets(film) {
         method: "PATCH", //
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
         // Converting the ticketData object into a JSON string to send as the request body
         body: JSON.stringify(ticketData),
@@ -119,7 +127,7 @@ function purchaseFilmTickets(film) {
         .then((data) => {
           ticketsLeft.textContent = `${data.capacity - data.tickets_sold}`;
 
-          if (ticketsLeft.textContent === 0) {
+          if (ticketsLeft.textContent == 0) {
             buyTickets.textContent = "SOLD OUT";
             document.getElementById(film.id).classList.add("sold-out"); // Adds sold-out class to the film's element if tickets are sold out
           }
@@ -134,14 +142,24 @@ function purchaseFilmTickets(film) {
         headers: {
           // Headers sent with the request
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify({
           film_id: film.id, // Includes the current film's ID to identify which film the tickets are for
           tickets: 1, // Number of tickets being purchased
         }),
       })
-        .then((res) => console.log(res.json()))
+        .then((res) =>res.json())
+        .then(data=>{
+          const ticket=document.createElement("li")
+          ticket.innerHTML=`
+            Movie title: ${film.title}
+            Ticket id: ${data.id}
+            No.of tickets: ${data.tickets}
+            Movie time: ${film.showtime}
+          `
+          movieTickets.appendChild(ticket)
+        })
         .catch((e) => {
           alert(e); // Alerts the user in case of an error
         });

@@ -6,7 +6,7 @@
       "runtime": "108",
       "capacity": 30,
       "showtime": "04:00PM",
-      "tickets_sold": 26,
+      "tickets_sold": 23,
       "description": "A giant lizard terrorizes a rural Texas community and a heroic teenager attempts to destroy the creature.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/2157/p2157_v_v8_ab.jpg"
     },
@@ -16,7 +16,7 @@
       "runtime": "118",
       "capacity": 50,
       "showtime": "06:45PM",
-      "tickets_sold": 33,
+      "tickets_sold": 34,
       "description": "A family gets lost on the road and stumbles upon a hidden, underground, devil-worshiping cult led by the fearsome Master and his servant Torgo.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/47781/p47781_v_v8_ac.jpg"
     },
@@ -46,7 +46,7 @@
       "runtime": "96",
       "capacity": 50,
       "showtime": "03:30PM",
-      "tickets_sold": 45,
+      "tickets_sold": 40,
       "description": "The Martians kidnap Santa Claus because there is nobody on Mars to give their children presents.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/4232/p4232_v_v8_aa.jpg"
     },
@@ -66,7 +66,7 @@
       "runtime": "94",
       "capacity": 30,
       "showtime": "07:30PM",
-      "tickets_sold": 22,
+      "tickets_sold": 23,
       "description": "A woman seeks revenge on her former lover, who owns a skydiving business.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/40518/p40518_v_v8_aa.jpg"
     },
@@ -96,7 +96,7 @@
       "runtime": "122",
       "capacity": 50,
       "showtime": "10:00PM",
-      "tickets_sold": 44,
+      "tickets_sold": 21,
       "description": "Giant spiders from another dimension invade Wisconsin.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/42171/p42171_v_v8_ab.jpg"
     },
@@ -106,7 +106,7 @@
       "runtime": "104",
       "capacity": 30,
       "showtime": "06:00PM",
-      "tickets_sold": 12,
+      "tickets_sold": 13,
       "description": "A group of swingin' teens take time out from having fun in the sun to try to foil a group of crooks searching for a stolen scroll.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/58122/p58122_v_v8_aa.jpg"
     },
@@ -116,7 +116,7 @@
       "runtime": "104",
       "capacity": 30,
       "showtime": "07:00PM",
-      "tickets_sold": 20,
+      "tickets_sold": 22,
       "description": "A series of murders in Michigan lead an American secret agent to Amsterdam, where he uncovers a plot to imperil the world with a potent new drug.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/93417/p93417_v_v8_aa.jpg",
       "showing_id": "12"
@@ -127,7 +127,7 @@
       "runtime": "100",
       "capacity": 40,
       "showtime": "09:00PM",
-      "tickets_sold": 31,
+      "tickets_sold": 32,
       "description": "A stock car driver goes undercover as the wheel man for a motorcycle gang.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/45367/p45367_v_v8_aa.jpg"
     },
@@ -386,6 +386,446 @@
     {
       "id": "c39e",
       "film_id": "6",
+      "tickets": 1
+    },
+    {
+      "id": "f29b",
+      "film_id": "7",
+      "tickets": 1
+    },
+    {
+      "id": "c043",
+      "film_id": "11",
+      "tickets": 1
+    },
+    {
+      "id": "534c",
+      "film_id": "12",
+      "tickets": 1
+    },
+    {
+      "id": "41c0",
+      "film_id": "10",
+      "tickets": 1
+    },
+    {
+      "id": "074e",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "e754",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "0bf7",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "d11b",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "2ba1",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "a8d5",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "dcc6",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "e105",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "72f4",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "dd32",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "aee5",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "fb62",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "4c68",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "3281",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "d72e",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "9360",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "2bb7",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "2162",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "3d08",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "930c",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "303c",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "fac8",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "c595",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "d48e",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "451d",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "d9ef",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "c6ce",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "bf86",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "9567",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "e0a1",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "efef",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "13a8",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "5fba",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "004e",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "8cf9",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "1bcf",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "6e51",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "5458",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "4471",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "6f7c",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "61b1",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "642f",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "7fd7",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "a2aa",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "95cf",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "b670",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "dad5",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "f846",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "18b2",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "8030",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "765a",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "96a6",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "b518",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "ce2b",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "6c01",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "2bae",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "a8ed",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "c2d1",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "7382",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "151b",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "4431",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "0f40",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "9004",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "e1ed",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "0807",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "f0a4",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "ff94",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "816f",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "2811",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "a454",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "e8f6",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "ea33",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "a578",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "2c3b",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "7b2d",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "4a72",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "b767",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "b10a",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "9e19",
+      "film_id": "10",
+      "tickets": 1
+    },
+    {
+      "id": "2cc2",
+      "film_id": "12",
+      "tickets": 1
+    },
+    {
+      "id": "33c2",
+      "film_id": "13",
+      "tickets": 1
+    },
+    {
+      "id": "ed36",
+      "film_id": "1",
+      "tickets": 1
+    },
+    {
+      "id": "6362",
+      "film_id": "2",
+      "tickets": 1
+    },
+    {
+      "id": "03e6",
+      "film_id": "1",
       "tickets": 1
     }
   ]
