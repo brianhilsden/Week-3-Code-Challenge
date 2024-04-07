@@ -1,4 +1,5 @@
-const titleList = document.getElementById("films");
+document.addEventListener("DOMContentLoaded",()=>{
+  const titleList = document.getElementById("films");
 const poster = document.getElementById("poster");
 const title = document.getElementById("title");
 const runtime = document.getElementById("runtime");
@@ -166,3 +167,4 @@ function purchaseFilmTickets(film) {
     }
   };
 }
+})

@@ -26,7 +26,7 @@
       "runtime": "93",
       "capacity": 50,
       "showtime": "09:30PM",
-      "tickets_sold": 32,
+      "tickets_sold": 34,
       "description": "An inventor comes up with a time machine, but must prevent its abuse at the hands of an evil C.E.O.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/23342/p23342_v_v8_ab.jpg"
     },
@@ -36,7 +36,7 @@
       "runtime": "101",
       "capacity": 40,
       "showtime": "09:00PM",
-      "tickets_sold": 38,
+      "tickets_sold": 39,
       "description": "A young man meets a farm girl who is actually a witch.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/43468/p43468_v_v8_aa.jpg"
     },
@@ -46,7 +46,7 @@
       "runtime": "96",
       "capacity": 50,
       "showtime": "03:30PM",
-      "tickets_sold": 46,
+      "tickets_sold": 50,
       "description": "The Martians kidnap Santa Claus because there is nobody on Mars to give their children presents.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/4232/p4232_v_v8_aa.jpg"
     },
@@ -127,7 +127,7 @@
       "runtime": "100",
       "capacity": 40,
       "showtime": "09:00PM",
-      "tickets_sold": 35,
+      "tickets_sold": 20,
       "description": "A stock car driver goes undercover as the wheel man for a motorcycle gang.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/45367/p45367_v_v8_aa.jpg"
     },
@@ -161,6 +161,31 @@
     {
       "id": "073b",
       "film_id": "1",
+      "tickets": "1"
+    },
+    {
+      "id": "abbf",
+      "film_id": "13",
+      "tickets": "1"
+    },
+    {
+      "id": "a407",
+      "film_id": "13",
+      "tickets": "1"
+    },
+    {
+      "id": "7356",
+      "film_id": "13",
+      "tickets": "1"
+    },
+    {
+      "id": "a4a9",
+      "film_id": "13",
+      "tickets": "1"
+    },
+    {
+      "id": "e6d0",
+      "film_id": "13",
       "tickets": "1"
     }
   ]
