@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded",()=>{
-  const titleList = document.getElementById("films");
+const titleList = document.getElementById("films");
 const poster = document.getElementById("poster");
 const title = document.getElementById("title");
 const runtime = document.getElementById("runtime");
@@ -104,9 +104,9 @@ function deleteSpecificMovie(film) {
 
   /* Handles the process of purchasing film tickets, updating the tickets sold and the remaining tickets, posting tickets bought to the tickets endpoint and displaying the response on the screen*/
 function purchaseFilmTickets(film) {
-  buyTickets.onclick = function () {
+  buyTickets.onclick =function () {
     if (ticketsLeft.textContent > 0 && parseInt(ticketsBought.value)<=parseInt(ticketsBought.max)) { // Checks if there are tickets left and if the number of tickets bought doesn't exceed the max allowed
-      ticketsLeft.textContent=parseInt(ticketsLeft.textContent)-parseInt(ticketsBought.value); // Decrementing the number of tickets left
+      
       film.tickets_sold=parseInt(film.tickets_sold)+parseInt(ticketsBought.value); // Incrementing the number of tickets sold
       // Creating an object to send the updated tickets sold count to the server
       const ticketData = {
