@@ -197,6 +197,16 @@
       "id": "3342",
       "film_id": "1",
       "tickets": "4"
+    },
+    {
+      "id": "d2c7",
+      "film_id": "6",
+      "tickets": "1"
+    },
+    {
+      "id": "963b",
+      "film_id": "6",
+      "tickets": "1"
     }
   ]
 }
