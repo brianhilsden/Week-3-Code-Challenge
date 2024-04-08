@@ -138,7 +138,7 @@ function purchaseFilmTickets(film) {
         });
 
       //POST request to add bought ticket(s) to the tickets endpoint
-      fetch("https://json-server-ogg2.onrender.com/tickets", {
+      fetch("https://json-server-flatdango.onrender.com/tickets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
